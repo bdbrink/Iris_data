@@ -35,19 +35,31 @@ print("Confusion Matrix:")
 print(conf_matrix)
 
 # Visualize the decision boundaries
-h = .02  # Step size in the mesh
+# Step size in the mesh
+h = .02
+
+# Define the range of values for the plot
 x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
 y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
 
+# Generate a meshgrid using NumPy
 xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+
+# Predict the class labels for each point in the meshgrid
 Z = knn_classifier.predict(np.c_[xx.ravel(), yy.ravel()])
 Z = Z.reshape(xx.shape)
 
-# plot 2d model using matplot
+# Plot the decision boundaries
 plt.figure(figsize=(8, 6))
 plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlBu, alpha=0.8)
+
+# Scatter plot of the training data points
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.RdYlBu, edgecolors='k')
+
+# Add labels and title
 plt.title('K-Nearest Neighbors Decision Boundaries')
 plt.xlabel(iris.feature_names[0])
 plt.ylabel(iris.feature_names[1])
+
+# Display the plot
 plt.show()
