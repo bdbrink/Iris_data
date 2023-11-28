@@ -43,6 +43,7 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 Z = knn_classifier.predict(np.c_[xx.ravel(), yy.ravel()])
 Z = Z.reshape(xx.shape)
 
+# plot 2d model using matplot
 plt.figure(figsize=(8, 6))
 plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlBu, alpha=0.8)
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.RdYlBu, edgecolors='k')
