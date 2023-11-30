@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Iterate over dataset to estimate models performance #
+
 from sklearn import datasets
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.svm import SVC
