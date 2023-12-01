@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-# Import necessary libraries
+# uses grid search to find optimized combo of parameters #
+
 from sklearn import datasets
 from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.svm import SVC
