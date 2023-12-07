@@ -46,3 +46,30 @@ class IrisClassificationTest(unittest.TestCase):
         knn_classifier.fit(X_train, y_train)
         y_pred = knn_classifier.predict(X_test)
         self.assertEqual(len(y_pred), len(y_test))
+
+    def test_accuracy_calculation(self):
+        """Test if accuracy is calculated correctly."""
+        from sklearn.metrics import accuracy_score
+        from sklearn.neighbors import KNeighborsClassifier
+        from sklearn import datasets
+        from sklearn.model_selection import train_test_split
+        iris = datasets.load_iris()
+        X, y = iris.data, iris.target
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        knn_classifier = KNeighborsClassifier(n_neighbors=3)
+        knn_classifier.fit(X_train, y_train)
+        y_pred = knn_classifier.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        self.assertAlmostEqual(accuracy, 0.947, delta=0.01)
+
+    def test_confusion_matrix_calculation(self):
+        """Test if confusion matrix is calculated correctly."""
+        from sklearn.metrics import confusion_matrix
+        from sklearn.neighbors import KNeighborsClassifier
+        from sklearn import datasets
+        from sklearn.model_selection import train_test_split
+        iris = datasets.load_iris()
+        X, y = iris.data, iris.target
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        knn_classifier = KNeighborsClassifier(n_neighbors=3)
+        knn_classifier.fit
